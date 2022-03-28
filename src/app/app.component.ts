@@ -60,4 +60,15 @@ export class AppComponent implements OnInit {
             return true;
         }
     }
+
+    removeHeader() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        titlee = titlee.slice( 2 );
+        if(titlee === 'signup' || titlee === 'nucleoicons'){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
