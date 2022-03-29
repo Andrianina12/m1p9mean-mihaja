@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 // import { NgbdModalComponent } from './modal/modal.component';
 // import { NgbdModalContent } from './modal/modal.component';
 import { AccueilClientComponent } from './client/accueil-client/accueil-client.component';
+import { InscriptionComponent } from './client/inscription/inscription.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { AccueilClientComponent } from './client/accueil-client/accueil-client.c
         // NotificationComponent,
         // NgbdModalComponent,
         // NgbdModalContent,
-        AccueilClientComponent
+        AccueilClientComponent,
+        InscriptionComponent
     ],
     // entryComponents: [NgbdModalContent],
     // exports:[ ComponentsComponent ]

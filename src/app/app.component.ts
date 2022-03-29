@@ -52,8 +52,8 @@ export class AppComponent implements OnInit {
     }
     removeFooter() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        titlee = titlee.slice( 1 );
-        if(titlee === 'signup' || titlee === 'nucleoicons'){
+        titlee = titlee.slice( 2 );
+        if(titlee === '' || titlee === 'inscription'){
             return false;
         }
         else {
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     removeHeader() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 2 );
-        if(titlee === 'signup' || titlee === 'nucleoicons'){
+        if(titlee === '' || titlee === 'inscription' ){
             return false;
         }
         else {
