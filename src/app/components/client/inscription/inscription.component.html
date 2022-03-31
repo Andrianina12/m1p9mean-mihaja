@@ -27,6 +27,15 @@
                                 </div>
                                   <input type="text" class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
+                              <label>Confirmez votre mot de passe</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
+                              </div>
                               <button class="btn btn-danger btn-block btn-round">S'inscrire</button>
                           </form>
                           <div class="forgot">

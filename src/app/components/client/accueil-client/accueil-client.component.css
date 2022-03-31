@@ -1,0 +1,43 @@
+#home {
+    background-image: url(assets/img/client1.jpg);
+    width: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 80vh;
+    padding-top: 40vh;
+    background-position: center top -150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#inputSuccess1 {
+    /* width: 100%; */
+    height: 60px;
+    border: 0px;
+    font-size: 16px;
+    padding: 0 15px 0 50px;
+    background: #fff url(assets/img/icon.svg) no-repeat left 13px center / 28px auto;
+}
+
+
+#searchButton{
+    height: 60px !important;
+    margin-left: -32px;
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-size: 18px;
+    background-color: #e19797;
+    border: 1px solid #e19797;
+}
+
+#list {
+    background-color: white;
+    margin: 2% 5%;
+    border-radius: 5px;
+}
+
+.table td {
+    border: none !important;
+}
+

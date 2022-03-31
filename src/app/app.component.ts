@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     removeHeader() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 2 );
-        if(titlee === '' || titlee === 'inscription' ){
+        if(titlee === '' || titlee === 'inscription'){
             return false;
         }
         else {
