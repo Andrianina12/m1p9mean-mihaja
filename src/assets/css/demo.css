@@ -1296,3 +1296,7 @@ pre.prettyprint {
     position: relative;
     z-index: 2;
 }
+
+.table td {
+    vertical-align: middle;
+}

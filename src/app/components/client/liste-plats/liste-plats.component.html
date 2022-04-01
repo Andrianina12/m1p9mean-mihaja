@@ -1,0 +1,51 @@
+
+<div class="wrapper">
+    <div class="main" id="home">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Liste des plats disponibles</h4>
+                <table class="table" >
+                    <tr *ngFor="let plats of listeplats">
+                        <td style="text-align: center;"><img [src]="plats.image" class="img-rounded img-responsive" width="200px" ></td>
+                        <td><h5><span class="note">{{plats.nom}}</span>
+                            <br/>
+                            <small>Ar {{plats.prix | number:'1.0-0'}}</small>
+                        </h5></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger btn-round" (click)="ajouterPanier(plats)">Ajouter</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <div id="card">
+                    <h4 class="panier">Votre panier</h4>
+                    <table class="table" *ngIf="panier.total != 0">
+                        <tr *ngFor="let plat  of panier.plats">
+                            <td><p>{{plat.nom}}</p></td>
+                            <td><button class="btn btn-default btn-just-icon" (click)="minus(plat)"><i class="fa fa-solid fa-minus"  ></i></button></td>
+                            <td><p>{{plat.quantite}} </p></td>
+                            <td><button class="btn btn-default btn-just-icon" (click)="plus(plat)"><i class="fa fa-solid fa-plus"></i></button></td>
+                            <td><p>Ar {{plat.montant | number:'1.0-0'}} </p></td>
+                        </tr>
+                        <tr>
+                            <td class="panier">Total</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight: bold;">Ar {{panier.total | number:'1.0-0'}} </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><button class="btn valider" (click)="valider()">Valider</button></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

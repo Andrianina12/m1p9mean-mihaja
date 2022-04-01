@@ -1,0 +1,48 @@
+
+<div class="wrapper">
+    <div class="main" id="home">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <div id="card">
+                    <h4 class="panier">Validation reçu</h4>
+                    <!-- <small class="panier">Valider votre panier pour finaliser la commande</small> -->
+                    <table class="table" *ngIf="panier.total != 0">
+                        <thead>
+                            <tr>
+                                <th>Plats</th>
+                                <th>Quantité</th>
+                                <th>Prix unitaire</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let plat  of panier.plats">
+                            <td><p>{{plat.nom}}</p></td>
+                            <td><p>{{plat.quantite}} </p></td>
+                            <td><p>{{plat.prix | number:'1.0-0'}} </p></td>
+                            <td><p>Ar {{plat.montant | number:'1.0-0'}} </p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Frais</p></td>
+                            <td></td>
+                            <td></td>
+                            <td>Ar {{4000 | number:'1.0-0'}} </td>
+                        </tr>
+                        <tr>
+                            <td class="panier">Total</td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight: bold;">Ar {{panier.total + 4000  | number:'1.0-0'}} </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td><td></td>
+                            <td><button class="btn valider" (click)="valider()">Valider</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

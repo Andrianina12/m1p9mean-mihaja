@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     removeFooter() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 2 );
-        if(titlee === '' || titlee === 'inscription'){
+        if(titlee === '' || titlee === 'inscription' || titlee === 'propos'){
             return false;
         }
         else {

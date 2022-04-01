@@ -30,37 +30,15 @@
                     <th ></th>
                     <th></th>
                 </tr>
-                <tr>
+                <tr *ngFor="let resto of listeResto">
                     <td></td>
-                    <td style="text-align: center;"><img src="assets/img/resto1.jpg" class="img-rounded img-responsive" width="200px" ></td>
-                    <td><h5><span class="note">Restaurant numero 1</span>
+                    <td style="text-align: center;"><img [src]="resto.image" class="img-rounded img-responsive" width="200px" ></td>
+                    <td><h5><span class="note">{{resto.nom}}</span>
                         <br/>
-                        <small>Ankorondrano, +261 34 78 254 69</small>
+                        <small>{{resto.adresse}}, {{resto.numero}}</small>
                     </h5></td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger btn-round">Voir les plats</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td style="text-align: center;"><img src="assets/img/resto2.jpg" class="img-rounded img-responsive" width="200px" ></td>
-                    <td><h5><span class="note">Restaurant numero 1</span>
-                        <br/>
-                        <small>Ankorondrano, +261 34 78 254 69</small>
-                    </h5></td>
-                    <td>
-                        <button type="button" class="btn btn-outline-danger btn-round">Voir les plats</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td style="text-align: center;"><img src="assets/img/resto3.jpg" class="img-rounded img-responsive" width="200px" ></td>
-                    <td><h5><span class="note">Restaurant numero 1</span>
-                        <br/>
-                        <small>Ankorondrano, +261 34 78 254 69</small>
-                    </h5></td>
-                    <td>
-                        <button type="button" class="btn btn-outline-danger btn-round">Voir les plats</button>
+                        <button type="button" class="btn btn-outline-danger btn-round" (click)="listePlats(resto)">Voir les plats</button>
                     </td>
                 </tr>
             </table>

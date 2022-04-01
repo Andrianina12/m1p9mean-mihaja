@@ -12,7 +12,7 @@
 }
 
 .form-control {
-    background-color: #fbfafa;;
+    background-color: #fbfafa;
     border: 1px solid $medium-gray;
     border-radius: $border-radius-base;
     color: $font-color;
@@ -126,7 +126,8 @@ textarea.form-control{
 }
 
 .register-form .form-control{
-    border: 1px solid transparent !important;
+    border: 1px solid #bcbbbb !important;
+    border-left: none !important;
 }
 #inputs {
 
@@ -168,9 +169,9 @@ textarea.form-control{
   &.form-group-no-border{
 
     .input-group-prepend .input-group-text{
-      border-right: transparent !important;
-      background: $white-color !important;
-        border: 1px solid $white-color !important;
+      border-right: transparent  !important;
+      background: #fbfafa !important;
+        border: 1px solid #bcbbbb !important;
       @include transition(300ms, linear);
     }
     .input-group-append .input-group-text{

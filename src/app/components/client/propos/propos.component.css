@@ -1,0 +1,19 @@
+img {
+    width: 100%;
+    height: 88vh;
+}
+
+#home {
+    padding: 5% 0% 0% 5%;
+    /* min-height: 63vh; */
+    max-width: 100%;
+}
+/* p{
+    text-indent: 5%;
+} */
+.col-md-9{
+    padding-right: 0 !important;
+}
+#propos{
+    padding-top: 5%;
+}

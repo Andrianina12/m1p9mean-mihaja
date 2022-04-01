@@ -8,14 +8,20 @@ import { AccueilClientComponent } from './components/client/accueil-client/accue
 // import { ProfileComponent } from './examples/profile/profile.component';
 import { SignupComponent } from './examples/signup/signup.component';
 import { InscriptionComponent } from './components/client/inscription/inscription.component';
+import { ListePlatsComponent } from './components/client/liste-plats/liste-plats.component';
+import { PanierComponent } from './components/client/panier/panier.component';
+import { ProposComponent } from './components/client/propos/propos.component';
 // import { LandingComponent } from './examples/landing/landing.component';
 // import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
 const routes: Routes =[
     // { path: '', redirectTo: 'signup', pathMatch: 'full' },
-    { path: '',           component: SignupComponent },
+    { path: '',                      component: SignupComponent },
     { path: 'inscription',           component: InscriptionComponent },
-    { path: 'home',             component: AccueilClientComponent },
+    { path: 'home',                  component: AccueilClientComponent },
+    { path: 'plats',                 component: ListePlatsComponent },
+    { path: 'panier',                component: PanierComponent},
+    { path: 'propos',                component: ProposComponent}
     // { path: 'user-profile',     component: ProfileComponent },
     // { path: 'landing',          component: LandingComponent },
     // { path: 'nucleoicons',      component: NucleoiconsComponent }

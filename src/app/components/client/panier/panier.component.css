@@ -1,0 +1,27 @@
+#home {
+    margin: 6% 5%;
+    min-height: 63vh;
+}
+
+#card {
+    border-radius: 5px;
+    box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e1a997;
+    background-color: #fff;
+    opacity: 0.7;
+    padding: 2%;
+}
+
+.panier {
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-bottom: 5%;
+}
+
+.valider {
+    background-color: #e1a997;
+    border: 2px solid #fff;
+    /* color: #a48a80;; */
+    color:  #fff;
+}

@@ -16,6 +16,9 @@ import { RouterModule } from '@angular/router';
 // import { NgbdModalContent } from './modal/modal.component';
 import { AccueilClientComponent } from './client/accueil-client/accueil-client.component';
 import { InscriptionComponent } from './client/inscription/inscription.component';
+import { ListePlatsComponent } from './client/liste-plats/liste-plats.component';
+import { PanierComponent } from './client/panier/panier.component';
+import { ProposComponent } from './client/propos/propos.component';
 
 @NgModule({
     imports: [
@@ -36,7 +39,10 @@ import { InscriptionComponent } from './client/inscription/inscription.component
         // NgbdModalComponent,
         // NgbdModalContent,
         AccueilClientComponent,
-        InscriptionComponent
+        InscriptionComponent,
+        ListePlatsComponent,
+        PanierComponent,
+        ProposComponent
     ],
     // entryComponents: [NgbdModalContent],
     // exports:[ ComponentsComponent ]

@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                       <div class="card card-register">
-                        <h3 class="title">Inscription sur E-kaly</h3>
+                        <img src="./assets/img/Capture2.PNG" style="margin-left: 20%;" width="170px">
                           <form class="register-form" (ngSubmit)="login()">
                               <label>Email</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
@@ -34,7 +34,7 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="text" class="form-control" [(ngModel)]="motdepasse" placeholder="Confirmation mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
                               <button class="btn btn-danger btn-block btn-round">S'inscrire</button>
                           </form>
