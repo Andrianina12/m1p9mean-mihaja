@@ -1,19 +1,39 @@
 const express = require("express")
-const login = require("./src/repository/Login");
 const app = express()
+const bodyParser = require("body-parser");
+const router = express.Router();
+const cors = require('cors');
+
+// repository
+const login = require("./src/repository/Login");
+
+app.use(cors({
+  origin: '*'
+}));
+
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// add router in the Express app.
+app.use("/", router);
 
 // use the express-static middleware
 app.use(express.static("public"))
 
 // define the first route
-app.get("/", function (req, res) {
+router.get("/", function (req, res) {
   res.send("<h1>Hello World!</h1>")
 })
 
-app.get("/login", async function(req, res){
-  var user = {email: "satandrianina@gmail.com", modtdepasse: "m1p9mean"};
-  var response = await login.login(user);
-  console.log("Js", response);
+
+router.post("/login", async function(req, res){
+  var response = await login.login(req.body);
+  res.json(response);
+});
+
+router.post("/inscription", async function(req, res){
+  var response = await login.inscrire(req.body);
   res.json(response);
 });
 
