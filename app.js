@@ -6,6 +6,7 @@ const cors = require('cors');
 
 // repository
 const login = require("./src/repository/Login");
+const client = require("./src/repository/Client");
 
 app.use(cors({
   origin: '*'
@@ -34,6 +35,27 @@ router.post("/login", async function(req, res){
 
 router.post("/inscription", async function(req, res){
   var response = await login.inscrire(req.body);
+  res.json(response);
+});
+
+
+router.get("/restaurants", async function(req, res){
+  var response = null;
+  var token = req.headers['authorization'];
+  response =  await login.verifyToken(token);
+  if(response == null) {
+     response = await client.listResto();
+  }
+  res.json(response);
+});
+
+router.post("/commander", async function(req, res){
+  var response = null;
+  var token = req.headers['authorization'];
+  response =  await login.verifyToken(token);
+  if(response == null) {
+     response = await client.commander(req.body);
+  }
   res.json(response);
 });
 

@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+const res = require('express/lib/response');
 var connect = require("../utils/Connect");
 
 exports.login = async function login(user) {
@@ -37,8 +38,9 @@ exports.verifyToken = async function verifyToken(token) {
         await client.connect();
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
+        token = token.split(" ")[1];
         const result = await collection.find({token: token}).toArray();
-        if(result == null) response = {code: 401,  data: null, message: "Veuillez vous connecter"};
+        if(result.length == 0) response = {code: 401,  data: null, message: "Veuillez vous connecter"};
     } catch(e) {
         response = {code: 501,  data: null, message: e.message};
         console.error(e);
