@@ -6,8 +6,16 @@
             </div>
             <div class="col-md-6">
                 <div id="card">
-                    <h4 class="panier">Validation reçu</h4>
+                    <h4 class="panier">Validation de la commande</h4>
                     <!-- <small class="panier">Valider votre panier pour finaliser la commande</small> -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Adresse de livraison" [(ngModel)]="adresse" name="adresse">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Votre numero de telephone" [(ngModel)]="numero" name="numero">
+                        </div>
+                    </div>
                     <table class="table" *ngIf="panier.total != 0">
                         <thead>
                             <tr>

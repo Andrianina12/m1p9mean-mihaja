@@ -11,17 +11,21 @@ import { GlobalService, Panier } from 'app/services/global.service';
 export class ListePlatsComponent implements OnInit {
 
   listeplats = [];
+  list = [];
+  mot: string = '';
   routeState: any;
   panier: Panier;
 
   constructor(private router: Router, private globalService: GlobalService) {
+    this.panier = this.globalService.panier;
     if (this.router.getCurrentNavigation().extras.state) {
       this.routeState = this.router.getCurrentNavigation().extras.state;
       if (this.routeState) {
-        this.listeplats = this.routeState.data
+        this.listeplats = this.routeState.data;
+        this.list = this.routeState.data;
+        this.panier.restaurant = this.routeState.resto;
       }
     }
-    this.panier = this.globalService.panier;
   }
 
   ngOnInit(): void {
@@ -60,6 +64,10 @@ export class ListePlatsComponent implements OnInit {
         data: this.panier
       }
     });
+  }
+
+  async search() {
+    this.listeplats =await this.list.filter(m => m.nom.includes(this.mot));
   }
 
 }

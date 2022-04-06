@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientService } from 'app/services/client.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-accueil-client',
@@ -10,6 +11,8 @@ import { ClientService } from 'app/services/client.service';
 export class AccueilClientComponent implements OnInit {
 
   listeResto = [];
+  list = [];
+  mot: string = '';
   constructor(private router: Router, private service: ClientService) { }
 
   ngOnInit(): void {
@@ -19,21 +22,47 @@ export class AccueilClientComponent implements OnInit {
   getListeResto() {
     const success = response => {
       if(response.code == 401) {
-        alert(response.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: false,
+          timer: 2500
+        })
         this.router.navigate['/'];
-      } else if(response.code !=200) alert(response.message);
-      else this.listeResto = response.data;
+      } else if(response.code !=200) Swal.fire({
+                position: 'center',
+                icon: 'error',
+                text: response.message,
+                showConfirmButton: false,
+                timer: 2500
+              })
+      else {
+        this.listeResto = response.data;
+        this.list = response.data;
+      } 
     }
-    const error = response => { alert(response.message); }
+    const error = response => { Swal.fire({
+                position: 'center',
+                icon: 'error',
+                text: response.message,
+                showConfirmButton: false,
+                timer: 2500
+              }) }
     this.service.getList().subscribe(success, error);
   }
 
   listePlats(resto: any) {
     this.router.navigate(['/plats'], {
       state: {
-        data: resto.plats
+        data: resto.plats,
+        resto: resto.nom
       }
     });
+  }
+
+  search() {
+    this.listeResto = this.list.filter(m => m.nom.includes(this.mot));
   }
 
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 
 export class GlobalService {
 
+  public user: any;
   panier: Panier = new Panier();
   public url = "https://m1p9mean-mihaja-back.herokuapp.com/";
   constructor(private http: HttpClient) { }
@@ -32,6 +33,11 @@ export class GlobalService {
     return options;
   }
 
+  isLogged() {
+    if(localStorage.getItem('token') == null) return false;
+    return true;
+  }
+
 }
 
 export class Panier {
@@ -41,6 +47,11 @@ export class Panier {
     this.plats = [];
     this.total = 0;
   }
+  date: string
+  numero: string
+  adresse: string
+  nom: string
+  restaurant: string
 }
 
 export class Panierplats {

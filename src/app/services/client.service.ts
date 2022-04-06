@@ -15,4 +15,12 @@ export class ClientService {
     return this.http.get(this.globalService.url + "restaurants", options);
   }
 
+  inscripiton(user): Observable<any> {
+    return this.http.post(this.globalService.url + "inscription", user);
+  }
+
+  commander(commande): Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.post(this.globalService.url + "commander", commande, options);
+  }
 }

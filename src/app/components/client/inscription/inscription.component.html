@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                       <div class="card card-register">
                         <img src="./assets/img/Capture2.PNG" style="margin-left: 20%;" width="170px">
-                          <form class="register-form" (ngSubmit)="login()">
+                          <form class="register-form" (ngSubmit)="signin()">
                               <label>Email</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -15,7 +15,7 @@
                                   </span>
                                 </div>
 
-                                  <input type="email" class="form-control" [(ngModel)]="email" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+                                  <input type="email" class="form-control" [(ngModel)]="email" placeholder="Email" (focus)="focus=true" (blur)="focus=false" name="email">
                               </div>
 
                               <label>Mot de passe</label>
@@ -25,7 +25,7 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="password" class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="password" class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe" (focus)="focus1=true" (blur)="focus1=false" name="motedepasse">
                               </div>
                               <label>Confirmez votre mot de passe</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
@@ -34,7 +34,7 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="password" class="form-control" [(ngModel)]="motdepasse" placeholder="Confirmation mot de passe" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="password" class="form-control" [(ngModel)]="nouveau" placeholder="Confirmation mot de passe" (focus)="focus1=true" (blur)="focus1=false" name="nouveau">
                               </div>
                               <button class="btn btn-danger btn-block btn-round">S'inscrire</button>
                           </form>

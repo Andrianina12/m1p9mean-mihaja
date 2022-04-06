@@ -20,6 +20,9 @@
     position: fixed;
     left: 50%;
     width: 45%;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    max-height: 75%;
 }
 
 .valider {
