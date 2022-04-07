@@ -59,6 +59,11 @@ router.post("/commander", async function(req, res){
   res.json(response);
 });
 
+router.get("/config", async function(req, res){
+  var response = null;
+  response = await login.getConfig();
+  res.json(response);
+})
 // start the server listening for requests
 app.listen(process.env.PORT || 3000, 
 	() => console.log("Server is running..."));

@@ -50,17 +50,15 @@ exports.verifyToken = async function verifyToken(token) {
     return response;
 }
 
-exports.inscrire = async function inscrire(user) {
+exports.getConfig = async function getConfig() {
     const client = connect.client();
     var response = null;
     try {
         await client.connect();
         var dbo = client.db("m1p9mean");
-        var collection = dbo.collection("users");
-        user.motdepasse = crypto.createHash('md5').update(user.motdepasse).digest('hex');
-        user.role = "client";
-        await collection.insertOne(user);
-        response = {code: 200, data: null, message: "Inscription reussie"};
+        var collection = dbo.collection("config");
+        const result = await collection.find().toArray();
+        response = {code: 200,  data: result, message: null};
     } catch(e) {
         response = {code: 501,  data: null, message: e.message};
         console.error(e);
