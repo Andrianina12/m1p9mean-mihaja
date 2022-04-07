@@ -19,6 +19,7 @@ import { InscriptionComponent } from './client/inscription/inscription.component
 import { ListePlatsComponent } from './client/liste-plats/liste-plats.component';
 import { PanierComponent } from './client/panier/panier.component';
 import { ProposComponent } from './client/propos/propos.component';
+import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { ProposComponent } from './client/propos/propos.component';
         InscriptionComponent,
         ListePlatsComponent,
         PanierComponent,
-        ProposComponent
+        ProposComponent,
+        AccueilAdminComponent
     ],
     // entryComponents: [NgbdModalContent],
     // exports:[ ComponentsComponent ]

@@ -40,11 +40,13 @@ export class ListePlatsComponent implements OnInit {
     };
     this.panier.plats.push(data);
     this.panier.total += plats.prix;
+    this.panier.benefice_resto += plats.benefice;
   }
 
   plus(plat: any) {
     plat.montant += plat.prix;
     this.panier.total += plat.prix;
+    this.panier.benefice_resto += plat.benefice;
     plat.quantite++;
     console.log(plat);
   }
@@ -52,6 +54,7 @@ export class ListePlatsComponent implements OnInit {
   minus(plat: any) {
     plat.montant -= plat.prix;
     this.panier.total -= plat.prix;
+    this.panier.benefice_resto -= plat.benefice;
     plat.quantite--;
     if(plat.quantite == 0){
       this.panier.plats = this.panier.plats.filter(m => m.nom!= plat.nom);
@@ -59,6 +62,8 @@ export class ListePlatsComponent implements OnInit {
   }
 
   valider(){
+    this.panier.benefice_ekaly = this.panier.benefice_resto * this.globalService.config.pourcentage;
+    this.panier.benefice_resto -= this.panier.benefice_ekaly;
     this.router.navigate(['/panier'], {
       state: {
         data: this.panier

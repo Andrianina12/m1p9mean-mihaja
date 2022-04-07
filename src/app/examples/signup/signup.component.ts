@@ -49,6 +49,7 @@ export class SignupComponent implements OnInit {
                 localStorage.setItem('user', response.data.email)
             } 
             if(response.data.role == 'client') this.router.navigateByUrl("/home");
+            else this.router.navigateByUrl("/commandes");
         }
         const error = response => { 
             Swal.fire({
