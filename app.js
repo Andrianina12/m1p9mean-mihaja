@@ -64,6 +64,10 @@ router.get("/config", async function(req, res){
   response = await login.getConfig();
   res.json(response);
 })
+
+
+
+
 // start the server listening for requests
 app.listen(process.env.PORT || 3000, 
 	() => console.log("Server is running..."));
