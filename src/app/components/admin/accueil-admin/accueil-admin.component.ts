@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilAdminComponent implements OnInit {
 
+  list: [];
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getList() {
+    this.list = [
+      
+    ]
   }
 
 }

@@ -18,7 +18,9 @@
                     <a href="#/propos" class="nav-link" >A propos de nous</a>
                 </li>
 
-                
+                <li class="nav-item" *ngIf="isAdmin()">
+                    <a href="#/commandes" class="nav-link">Accueil</a>
+                </li>
                 <li class="nav-item">
                     <a href="#" (click)="logout()" class="nav-link">Se deconnecter</a>
                 </li>

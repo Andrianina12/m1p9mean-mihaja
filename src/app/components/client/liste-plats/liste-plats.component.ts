@@ -21,7 +21,6 @@ export class ListePlatsComponent implements OnInit {
     if (this.router.getCurrentNavigation().extras.state) {
       this.routeState = this.router.getCurrentNavigation().extras.state;
       if (this.routeState) {
-        this.listeplats = this.routeState.data;
         this.list = this.routeState.data;
         this.panier.restaurant = this.routeState.resto;
       }
@@ -29,6 +28,8 @@ export class ListePlatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listeplats = this.list.filter(m => m.visible);
+    this.list = this.listeplats;
   }
 
   ajouterPanier(plats: any) {

@@ -46,10 +46,10 @@ export class SignupComponent implements OnInit {
             }
             else {
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', response.data.email)
+                localStorage.setItem('user', response.data.email);
+                if(response.data.role == 'client') this.router.navigateByUrl("/home");
+                else this.router.navigateByUrl("/commandes");
             } 
-            if(response.data.role == 'client') this.router.navigateByUrl("/home");
-            else this.router.navigateByUrl("/commandes");
         }
         const error = response => { 
             Swal.fire({
