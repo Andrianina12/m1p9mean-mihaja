@@ -7,6 +7,7 @@ const cors = require('cors');
 // repository
 const login = require("./src/repository/Login");
 const client = require("./src/repository/Client");
+const admin = require("./src/repository/Admin");
 
 app.use(cors({
   origin: '*'
@@ -34,7 +35,7 @@ router.post("/login", async function(req, res){
 });
 
 router.post("/inscription", async function(req, res){
-  var response = await login.inscrire(req.body);
+  var response = await client.inscrire(req.body);
   res.json(response);
 });
 
@@ -42,7 +43,7 @@ router.post("/inscription", async function(req, res){
 router.get("/restaurants", async function(req, res){
   var response = null;
   var token = req.headers['authorization'];
-  response =  await login.verifyToken(token);
+  response =  await login.verifyToken(token, 'client');
   if(response == null) {
      response = await client.listResto();
   }
@@ -52,7 +53,7 @@ router.get("/restaurants", async function(req, res){
 router.post("/commander", async function(req, res){
   var response = null;
   var token = req.headers['authorization'];
-  response =  await login.verifyToken(token);
+  response =  await login.verifyToken(token, 'client');
   if(response == null) {
      response = await client.commander(req.body);
   }
@@ -65,7 +66,25 @@ router.get("/config", async function(req, res){
   res.json(response);
 })
 
+router.post("/insertUser", async function(req, res) {
+  var response = null;
+  var token = req.headers['authorization'];
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.insertUser(req.body);
+  }
+  res.json(response);
+})
 
+router.get("/commandesAdmin", async function(req, res){
+  var response = null;
+  var token = req.headers['authorization'];
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.listeCommande();
+  }
+  res.json(response);
+})
 
 
 // start the server listening for requests

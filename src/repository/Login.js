@@ -31,7 +31,7 @@ exports.login = async function login(user) {
     return response;
 }
 
-exports.verifyToken = async function verifyToken(token) {
+exports.verifyToken = async function verifyToken(token, role) {
     const client = connect.client();
     var response = null;
     try {
@@ -40,7 +40,8 @@ exports.verifyToken = async function verifyToken(token) {
         var collection = dbo.collection("users");
         token = token.split(" ")[1];
         const result = await collection.find({token: token}).toArray();
-        if(result.length == 0) response = {code: 401,  data: null, message: "Veuillez vous connecter"};
+        console.log('token', result);
+        if(result.length == 0 || result[0].role != role) response = {code: 401,  data: null, message: "Veuillez vous connecter"};
     } catch(e) {
         response = {code: 501,  data: null, message: e.message};
         console.error(e);

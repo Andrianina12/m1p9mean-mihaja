@@ -1,4 +1,33 @@
 var connect = require("../utils/Connect");
+var nodemailer = require('nodemailer');
+var crypto = require('crypto');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'ekaly.1019@gmail.com',
+        pass: 'm1p9mean1019'
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
+function sendMail(email, mailContent) {
+    var mailOptions = {
+        from: 'ekaly.1019@gmail.com',
+        to: email,
+        subject: mailContent.subject,
+        text: mailContent.text
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 
 exports.listeCommande = async function list() {
     const client = connect.client();
@@ -83,9 +112,14 @@ exports.insertUser = async function insertUser(user) {
         await client.connect();
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
+        var mail = {
+            subject: "Bienvenue chez E-kaly",
+            text: "Bienvenue dans notre equipe!! En tant que "+ user.role +", vos coordonnées seront: Email: " + user.email + " Mot de passe: " + user.motdepasse
+        }
         user.identifiant = crypto.createHash('md5').update(user.email).digest('hex');
         user.motdepasse = crypto.createHash('md5').update(user.motdepasse).digest('hex');
         await collection.insertOne(user);
+        sendMail(user.email, mail);
         const result = await collection.find({role: user.role}).toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {

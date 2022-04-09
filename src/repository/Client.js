@@ -1,5 +1,6 @@
 var connect = require("../utils/Connect");
 var nodemailer = require('nodemailer');
+var crypto = require('crypto');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -43,7 +44,7 @@ exports.inscrire = async function inscrire(user) {
             subject: "Bienvenue chez E-kaly",
             text: "Bienvenue à bord!! Nous sommes une équipe disponible pour la livraison à tout moment de vos petit creux. Passez vos commandes en visitant tous nos restaurants partenaires ... Il y en a pour tous les gouts."
         }
-        this.sendMail(user.email, mail);
+        sendMail(user.email, mail);
     } catch(e) {
         response = {code: 501,  data: null, message: e.message};
         console.error(e);
