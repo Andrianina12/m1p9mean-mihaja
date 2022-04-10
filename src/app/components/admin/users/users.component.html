@@ -7,19 +7,19 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <input class="form-control" placeholder="Email">
+                <input class="form-control" [(ngModel)]="email" placeholder="Email">
             </div>
             <div class="col-md-3">
-                <input class="form-control" placeholder="Mot de passe">
+                <input class="form-control" [(ngModel)]="motdepasse" placeholder="Mot de passe">
             </div>
             <div class="col-md-3">
-                <select class="form-control">
+                <select class="form-control" [(ngModel)]="role">
                     <option>Restaurant</option>
                     <option>Livreur</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-danger">Enregistrer</button>
+                <button class="btn btn-danger" (click)="insert()">Enregistrer</button>
             </div>
         </div>
 
@@ -29,10 +29,18 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Identifiant</th>
                             <th>Email</th>
                             <th>Role</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr *ngFor="let item of list">
+                            <td>{{item.identifiant}} </td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.role}} </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

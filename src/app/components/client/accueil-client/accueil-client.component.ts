@@ -26,10 +26,12 @@ export class AccueilClientComponent implements OnInit {
           position: 'center',
           icon: 'error',
           text: response.message,
-          showConfirmButton: false,
+          showConfirmButton: true,
           timer: 2500
+        }).then(() => {
+          this.router.navigate['/'];
         })
-        this.router.navigate['/'];
+        
       } else if(response.code !=200) Swal.fire({
                 position: 'center',
                 icon: 'error',

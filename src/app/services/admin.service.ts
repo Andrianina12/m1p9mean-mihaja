@@ -14,4 +14,14 @@ export class AdminService {
     const options = this.globalService.formOption(true, localStorage.getItem('token'));
     return this.http.get(this.globalService.url + "commandesAdmin", options);
   }
+
+  listUtilisateurs(): Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.get(this.globalService.url + "getUsers", options);
+  }
+
+  insertUser(user): Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.post(this.globalService.url + "insertUser",user, options);
+  }
 }

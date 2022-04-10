@@ -20,8 +20,8 @@
                         <tr *ngFor="let item of list">
                             <td>{{item.date}} </td>
                             <td>{{item.restaurant}} </td>
-                            <td>{{item.total}} </td>
-                            <td>{{item.benefice_ekaly}} </td>
+                            <td>{{item.total  | number:'1.0-0'}} </td>
+                            <td>{{item.benefice_ekaly  | number:'1.0-0'}} </td>
                             <td>{{item.etat}} </td>
                         </tr>
                     </tbody>
