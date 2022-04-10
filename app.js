@@ -42,7 +42,7 @@ router.post("/inscription", async function(req, res){
 
 router.get("/restaurants", async function(req, res){
   var response = null;
-  var token = req.headers['Authorization'];
+  var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'client');
   if(response == null) {
      response = await client.listResto();
@@ -52,7 +52,7 @@ router.get("/restaurants", async function(req, res){
 
 router.post("/commander", async function(req, res){
   var response = null;
-  var token = req.headers['Authorization'];
+  var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'client');
   if(response == null) {
      response = await client.commander(req.body);
@@ -68,7 +68,7 @@ router.get("/config", async function(req, res){
 
 router.post("/insertUser", async function(req, res) {
   var response = null;
-  var token = req.headers['Authorization'];
+  var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
   if(response == null) {
      response = await admin.insertUser(req.body);
@@ -78,7 +78,7 @@ router.post("/insertUser", async function(req, res) {
 
 router.get("/commandesAdmin", async function(req, res){
   var response = null;
-  var token = req.headers['Authorization'];
+  var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
   if(response == null) {
      response = await admin.listeCommande();
