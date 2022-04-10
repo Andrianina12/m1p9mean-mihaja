@@ -13,6 +13,7 @@ import { PanierComponent } from './components/client/panier/panier.component';
 import { ProposComponent } from './components/client/propos/propos.component';
 import { AuthGuard } from './auth.guard';
 import { AccueilAdminComponent } from './components/admin/accueil-admin/accueil-admin.component';
+import { UsersComponent } from './components/admin/users/users.component';
 // import { LandingComponent } from './examples/landing/landing.component';
 // import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
@@ -24,7 +25,8 @@ const routes: Routes =[
     { path: 'plats',                 component: ListePlatsComponent,    canActivate:[AuthGuard]},
     { path: 'panier',                component: PanierComponent,        canActivate:[AuthGuard]},
     { path: 'propos',                component: ProposComponent,        canActivate:[AuthGuard]},
-    { path: 'commandes',             component: AccueilAdminComponent,  canActivate:[AuthGuard]}
+    { path: 'commandes',             component: AccueilAdminComponent,  canActivate:[AuthGuard]},
+    { path: 'utilisateurs',          component: UsersComponent,         canActivate:[AuthGuard]}
     // { path: 'user-profile',     component: ProfileComponent },
     // { path: 'landing',          component: LandingComponent },
     // { path: 'nucleoicons',      component: NucleoiconsComponent }

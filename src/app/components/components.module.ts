@@ -20,6 +20,7 @@ import { ListePlatsComponent } from './client/liste-plats/liste-plats.component'
 import { PanierComponent } from './client/panier/panier.component';
 import { ProposComponent } from './client/propos/propos.component';
 import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
+import { UsersComponent } from './admin/users/users.component';
 
 @NgModule({
     imports: [
@@ -44,7 +45,8 @@ import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.compo
         ListePlatsComponent,
         PanierComponent,
         ProposComponent,
-        AccueilAdminComponent
+        AccueilAdminComponent,
+        UsersComponent
     ],
     // entryComponents: [NgbdModalContent],
     // exports:[ ComponentsComponent ]

@@ -19,7 +19,10 @@
                 </li>
 
                 <li class="nav-item" *ngIf="isAdmin()">
-                    <a href="#/commandes" class="nav-link">Accueil</a>
+                    <a href="#/commandes" class="nav-link">Commandes</a>
+                </li>
+                <li class="nav-item" *ngIf="isAdmin()">
+                    <a href="#/utilisateurs" class="nav-link">Utilisateurs</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" (click)="logout()" class="nav-link">Se deconnecter</a>
