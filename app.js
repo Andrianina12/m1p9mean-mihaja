@@ -81,7 +81,7 @@ router.post("/insertUser", async function(req, res) {
   res.json(response);
 })
 
-router.post("/getUsers", async function(req, res) {
+router.get("/getUsers", async function(req, res) {
   var response = null;
   var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
@@ -91,7 +91,7 @@ router.post("/getUsers", async function(req, res) {
   res.json(response);
 })
 
-router.post("/getLivreur", async function(req, res) {
+router.get("/getLivreur", async function(req, res) {
   var response = null;
   var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
@@ -111,7 +111,7 @@ router.get("/commandesAdmin", async function(req, res){
   res.json(response);
 })
 
-router.get("/updateCommandesAdmin", async function(req, res){
+router.put("/updateCommandesAdmin", async function(req, res){
   var response = null;
   var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
