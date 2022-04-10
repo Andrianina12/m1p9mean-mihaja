@@ -14,7 +14,7 @@ exports.login = async function login(user) {
         var result = await collection.find(user).toArray();
         if(result.length == 0) response = {code: 401,  data: null, message: "Identifiant ou mot de passe invalide"};
         else {
-            result[0].token = crypto.randomBytes(48).toString('hex');
+            result[0].token = crypto.createHash('md5').update(user.email + new Date()).digest('hex');
             await collection.updateOne(user,{$set: result[0]});
             response = {code: 200, data: result[0], message: null}
         } 
@@ -39,8 +39,9 @@ exports.verifyToken = async function verifyToken(token, role) {
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
         token = token.split(" ")[1];
+        console.log('token', token)
         const result = await collection.find({token: token}).toArray();
-        console.log('token', result);
+        console.log('result', result);
         if(result.length == 0 || result[0].role != role) response = {code: 401,  data: null, message: "Veuillez vous connecter"};
     } catch(e) {
         response = {code: 501,  data: null, message: e.message};
