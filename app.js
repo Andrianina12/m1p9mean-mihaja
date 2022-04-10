@@ -8,6 +8,7 @@ const cors = require('cors');
 const login = require("./src/repository/Login");
 const client = require("./src/repository/Client");
 const admin = require("./src/repository/Admin");
+const livreur = require("./src/repository/Livreur");
 
 app.use(cors({
   origin: '*'
@@ -28,12 +29,20 @@ router.get("/", function (req, res) {
   res.send("<h1>Hello World!</h1>")
 })
 
-
+// -------------- globale ------------------
 router.post("/login", async function(req, res){
   var response = await login.login(req.body);
   res.json(response);
 });
 
+router.get("/config", async function(req, res){
+  var response = null;
+  response = await login.getConfig();
+  res.json(response);
+})
+
+
+// ------------ client ------------------------------
 router.post("/inscription", async function(req, res){
   var response = await client.inscrire(req.body);
   res.json(response);
@@ -60,11 +69,7 @@ router.post("/commander", async function(req, res){
   res.json(response);
 });
 
-router.get("/config", async function(req, res){
-  var response = null;
-  response = await login.getConfig();
-  res.json(response);
-})
+// ------------------------- admin -------------------
 
 router.post("/insertUser", async function(req, res) {
   var response = null;
@@ -76,12 +81,53 @@ router.post("/insertUser", async function(req, res) {
   res.json(response);
 })
 
+router.post("/getUsers", async function(req, res) {
+  var response = null;
+  var token = req.headers.authorization;
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.getUsers();
+  }
+  res.json(response);
+})
+
+router.post("/getLivreur", async function(req, res) {
+  var response = null;
+  var token = req.headers.authorization;
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.getLivreur();
+  }
+  res.json(response);
+})
+
 router.get("/commandesAdmin", async function(req, res){
   var response = null;
   var token = req.headers.authorization;
   response =  await login.verifyToken(token, 'admin');
   if(response == null) {
      response = await admin.listeCommande();
+  }
+  res.json(response);
+})
+
+router.get("/updateCommandesAdmin", async function(req, res){
+  var response = null;
+  var token = req.headers.authorization;
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.updateCommande(req.body);
+  }
+  res.json(response);
+})
+
+// ---------------------- livreur --------------------
+router.get("/commandesLivreur", async function(req, res){
+  var response = null;
+  var token = req.headers.authorization;
+  response =  await login.verifyToken(token, 'livreur');
+  if(response == null) {
+     response = await livreur.listeCommande(token);
   }
   res.json(response);
 })
