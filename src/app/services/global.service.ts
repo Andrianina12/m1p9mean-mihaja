@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -27,17 +27,10 @@ export class GlobalService {
 
   formOption (use_authorization = false, token = null) {
     const options = {
-      headers: {
-        'Content-Type' : 'application/json',
-      }
+      headers: new HttpHeaders()
+      .set('Authorization',  `Bearer ${token}`)
+      .set('Content-Type' , 'application/json')
     };
-
-    if (use_authorization) {
-      if(token == null) {
-        token = '';
-      }
-      options['headers']['Authorization'] = token;
-    }
     return options;
   }
 
