@@ -55,11 +55,13 @@ exports.updateCommande = async function update(commande) {
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("commandes");
         var param = {
-            _id: commande._id,
             nom: commande.nom,
             date: commande.date
         }
-        await collection.updateOne(param, {$set: commande});
+        var update = {
+            livreur: commande.livreur
+        }
+        await collection.updateOne(param, {$set: update});
         const result = await collection.find().toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {
