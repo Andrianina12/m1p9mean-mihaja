@@ -197,10 +197,9 @@ exports.calculateProfits = async function calculateProfits(data) {
     var response = null
     console.log(new Date())
     try {
-        console.log("Data", data);
         await client.connect();
         var result = null;
-        if(data) {
+        if(data.restaurant) {
             if (data.gte && data.lte) {
                 result = await client.db("m1p9mean").collection("commandes").aggregate([
                     {
@@ -227,7 +226,6 @@ exports.calculateProfits = async function calculateProfits(data) {
                 ]).toArray()
             }
         } else {
-            console.log("Tafiditra eto");
             result = await client.db("m1p9mean").collection("commandes").aggregate([
                     {
                         $group: { "_id": "$date_stat", "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
