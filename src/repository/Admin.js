@@ -204,13 +204,13 @@ exports.calculateProfits = async function calculateProfits(data) {
                 result = await client.db("m1p9mean").collection("commandes").aggregate([
                     {
                         $match: {
-                            "restaurant": data.restaurant, "date": {
+                            "restaurant": data.restaurant, "date_stat": {
                                 $gte: data.gte, $lte: data.lte
                             }
                         }
                     },
                     {
-                        $group: { "_id": "$date", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                        $group: { "_id": "$date_stat", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
                     }
                 ]).toArray()
             } else{
@@ -221,14 +221,15 @@ exports.calculateProfits = async function calculateProfits(data) {
                         }
                     },
                     {
-                        $group: { "_id": "$date", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                        $group: { "_id": "$date_stat", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
                     }
                 ]).toArray()
             }
         } else {
+            console.log("Tafiditra eto");
             result = await client.db("m1p9mean").collection("commandes").aggregate([
                     {
-                        $group: { "_id": "$date", "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                        $group: { "_id": "$date_stat", "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
                     }
                 ]).toArray()
         }
