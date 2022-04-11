@@ -197,6 +197,7 @@ exports.calculateProfits = async function calculateProfits(data) {
     var response = null
     console.log(new Date())
     try {
+        await client.connect();
         var result = null;
         if(data) {
             if (data.gte && data.lte) {
