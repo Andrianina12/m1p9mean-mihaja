@@ -112,7 +112,7 @@ exports.getUsers = async function getUsers() {
         await client.connect();
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
-        const result = await collection.find({role: {$not:"client"}}).toArray();
+        const result = await collection.find({role: {$not: { $regex: "^client.*" }}}).toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {
         response = {code: 501,  data: null, message: e.message};
@@ -138,7 +138,7 @@ exports.insertUser = async function insertUser(user) {
         user.motdepasse = crypto.createHash('md5').update(user.motdepasse).digest('hex');
         await collection.insertOne(user);
         sendMail(user.email, mail);
-        const result = await collection.find({role: user.role}).toArray();
+        const result = await collection.find({role: {$not: { $regex: "^client.*" }}}).toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {
         response = {code: 501,  data: null, message: e.message};
