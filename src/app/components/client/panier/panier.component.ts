@@ -33,7 +33,16 @@ export class PanierComponent implements OnInit {
   }
 
   valider() {
-    this.panier.date = this.datePipe.transform(this.date, 'yyyy-MM-dd,  h:mm a');
+    if(this.adresse == '' || this.numero == '') {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        text: "Completez le formulaire",
+        showConfirmButton: false,
+        timer: 2500
+      })
+    } else {
+      this.panier.date = this.datePipe.transform(this.date, 'yyyy-MM-dd,  h:mm a');
     this.panier.date_stat = this.datePipe.transform(this.date, 'yyyy-MM-dd');
     this.panier.nom = localStorage.getItem('user');
     this.panier.adresse = this.adresse;
@@ -64,7 +73,7 @@ export class PanierComponent implements OnInit {
           position: 'center',
           icon: 'success',
           text: "Votre commande est bien reçue",
-          showConfirmButton: true,
+          showConfirmButton: false,
           timer: 2500
         }).then(() => {
           this.router.navigate(['/home']);
@@ -80,6 +89,8 @@ export class PanierComponent implements OnInit {
                 timer: 2500
               }) }
     this.service.commander(this.panier).subscribe(success, error);
+    }
+    
   }
 
 }
