@@ -191,3 +191,52 @@ exports.stat = async function stat(param) {
     }
     return response;
 }
+
+exports.calculateProfits = async function calculateProfits(data) {
+    const client = connect.client();
+    var response = null
+    console.log(new Date())
+    try {
+        var result = null;
+        if(data) {
+            if (data.gte && data.lte) {
+                result = await client.db("m1p9mean").collection("commandes").aggregate([
+                    {
+                        $match: {
+                            "restaurant": data.restaurant, "date": {
+                                $gte: data.gte, $lte: data.lte
+                            }
+                        }
+                    },
+                    {
+                        $group: { "_id": "$date", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                    }
+                ]).toArray()
+            } else{
+                result = await client.db("m1p9mean").collection("commandes").aggregate([
+                    {
+                        $match: {
+                            "restaurant": data.restaurant
+                        }
+                    },
+                    {
+                        $group: { "_id": "$date", "beneficeTotalResto": { $sum: "$benefice_resto" }, "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                    }
+                ]).toArray()
+            }
+        } else {
+            result = await client.db("m1p9mean").collection("commandes").aggregate([
+                    {
+                        $group: { "_id": "$date", "beneficeTotalEkaly": { $sum: "$benefice_ekaly" } }
+                    }
+                ]).toArray()
+        }
+
+        console.log(result)
+    } catch (e) {
+        console.error(e)
+    } finally {
+        client.close()
+    }
+    return result
+}
