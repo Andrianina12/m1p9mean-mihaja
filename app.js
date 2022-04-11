@@ -81,6 +81,16 @@ router.post("/insertUser", async function(req, res) {
   res.json(response);
 })
 
+router.post("/statAdmin", async function(req, res) {
+  var response = null;
+  var token = req.headers.authorization;
+  response =  await login.verifyToken(token, 'admin');
+  if(response == null) {
+     response = await admin.calculateProfits(req.body);
+  }
+  res.json(response);
+})
+
 router.get("/getUsers", async function(req, res) {
   var response = null;
   var token = req.headers.authorization;
