@@ -1,0 +1,50 @@
+<div class="boxes" id="body" *ngIf="isLoading">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+
+<div class="wrapper" *ngIf="!isLoading">
+    <div class="main" id="home">
+        <div class="row mb-4">
+            <div class="col-md-12" style="text-align: center;">
+                <h4 class="mb-2">Statistiques des benefices</h4>
+                <small>Veuillez choisir un restaurant si vous voulez des chiffres plus precis</small>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <input type="text" placeholder="Restaurant" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger">Rechercher</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" style="text-align: center !important;">
+                    <thead>
+                        <tr>
+                            <th>Date de la commande</th>
+                            <th>Benefice totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of list">
+                            <td>{{item._id}} </td>
+                            <td>Ar {{item.beneficeTotalEkaly | number:'1.0-0'}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -34,4 +34,9 @@ export class AdminService {
     const options = this.globalService.formOption(true, localStorage.getItem('token'));
     return this.http.put(this.globalService.url + "updateCommandesAdmin", commande, options);
   }
+
+  stat(data): Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.post(this.globalService.url + "statAdmin",data, options);
+  }
 }

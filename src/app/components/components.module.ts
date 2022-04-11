@@ -21,6 +21,8 @@ import { PanierComponent } from './client/panier/panier.component';
 import { ProposComponent } from './client/propos/propos.component';
 import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
 import { UsersComponent } from './admin/users/users.component';
+import { StatAdminComponent } from './admin/stat-admin/stat-admin.component';
+import { AccueilLivreurComponent } from './livreur/accueil-livreur/accueil-livreur.component';
 
 @NgModule({
     imports: [
@@ -46,7 +48,9 @@ import { UsersComponent } from './admin/users/users.component';
         PanierComponent,
         ProposComponent,
         AccueilAdminComponent,
-        UsersComponent
+        UsersComponent,
+        StatAdminComponent,
+        AccueilLivreurComponent
     ],
     // entryComponents: [NgbdModalContent],
     // exports:[ ComponentsComponent ]

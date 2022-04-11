@@ -1,0 +1,31 @@
+<div class="boxes" id="body" *ngIf="isLoading">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+
+<div class="wrapper" *ngIf="!isLoading">
+    <div class="main" id="home">
+        <div class="row">
+            <div class="col-md-3" id="propos">
+                <h3 style="text-align: center;">Accueil pour les profils</h3>
+                <p><i class="fa fa-heart heart"></i>Livreur</p>
+                <p><i class="fa fa-heart heart"></i>Restaurant</p>
+                <br><br>
+                <small>Contactez-nous pour plus d'informations: </small><br>
+                <small>+261 34 420 26</small><br>
+                <small>ekaly@gmail.com</small>
+            </div>
+            <div class="col-md-9">
+                <img src="./assets/img/propos.png">
+            </div>
+        </div>
+    </div>
+</div>

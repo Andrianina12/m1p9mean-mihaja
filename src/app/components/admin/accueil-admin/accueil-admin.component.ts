@@ -112,12 +112,18 @@ export class AccueilAdminComponent implements OnInit {
           icon: 'error',
           text: response.message,
           showConfirmButton: false,
-          timer: 12500
+          timer: 2500
         }).then(() => this.isLoading = false)
       } 
       else {
         this.list = response.data;
-        this.isLoading = false
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          text: "Livreur bien assigné",
+          showConfirmButton: false,
+          timer: 2500
+        })
       } 
     }
     const error = response => { Swal.fire({

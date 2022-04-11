@@ -48,7 +48,8 @@ export class SignupComponent implements OnInit {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', response.data.email);
                 if(response.data.role == 'client') this.router.navigateByUrl("/home");
-                else this.router.navigateByUrl("/commandes");
+                else if(response.data.role == 'client') this.router.navigateByUrl("/commandes");
+                else this.router.navigateByUrl("/accueil");
             } 
         }
         const error = response => { 

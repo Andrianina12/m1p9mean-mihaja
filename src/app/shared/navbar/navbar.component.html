@@ -24,6 +24,9 @@
                 <li class="nav-item" *ngIf="isAdmin()">
                     <a href="#/utilisateurs" class="nav-link">Utilisateurs</a>
                 </li>
+                <li class="nav-item" *ngIf="isAdmin()">
+                    <a href="#/statistiques" class="nav-link">Statistiques</a>
+                </li>
                 <li class="nav-item">
                     <a href="#" (click)="logout()" class="nav-link">Se deconnecter</a>
                 </li>
