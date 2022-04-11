@@ -231,12 +231,13 @@ exports.calculateProfits = async function calculateProfits(data) {
                     }
                 ]).toArray()
         }
-
+        response = {code: 200, data: result, message: null}
         console.log(result)
     } catch (e) {
         console.error(e)
+        response = {code: 501,  data: null, message: e.message};
     } finally {
         client.close()
     }
-    return result
+    return response
 }
