@@ -49,7 +49,7 @@ export class PanierComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         }).then(() => {
-          this.router.navigate['/'];
+          this.router.navigateByUrl('');
         })
         
       } else if(response.code !=200) Swal.fire({

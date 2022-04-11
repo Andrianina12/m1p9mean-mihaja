@@ -29,4 +29,9 @@ export class AdminService {
     const options = this.globalService.formOption(true, localStorage.getItem('token'));
     return this.http.get(this.globalService.url + "getLivreur", options);
   }
+
+  updateCommande(commande):  Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.put(this.globalService.url + "updateCommandesAdmin", commande, options);
+  }
 }

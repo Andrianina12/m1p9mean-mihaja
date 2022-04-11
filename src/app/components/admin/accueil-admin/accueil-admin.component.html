@@ -38,14 +38,10 @@
                             <td>{{item.etat}} </td>
                             <td *ngIf="item.livreur">{{item.livreur}}</td>
                             <td *ngIf="!item.livreur">
-                                <select class="form-control" [(ngModel)]="item.livreur">
-                                    <option *ngFor="let livreur of livreurs" value="livreur.email">{{livreur.email}}</option>
+                                <select class="form-control" [(ngModel)]="item.livreur" (change)="update(item)" >
+                                    <option *ngFor="let livreur of livreurs" value="{{livreur.email}}">{{livreur.email}}</option>
                                 </select>
                             </td>
-                            <td *ngIf="!item.livreur">
-                                <button class="btn btn-danger"><i class="fa fa-solid fa-check"></i></button>
-                            </td>
-                            
                         </tr>
                     </tbody>
                 </table>

@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
           showConfirmButton: true,
           timer: 2500
         }).then(() => {
-          this.router.navigate['/'];
+          this.router.navigateByUrl('');
         })
         
       } else if(response.code !=200) Swal.fire({
@@ -78,7 +78,7 @@ export class UsersComponent implements OnInit {
             showConfirmButton: true,
             timer: 2500
           }).then(() => {
-            this.router.navigate['/'];
+            this.router.navigateByUrl('');
           })
           
         } else if(response.code !=200) Swal.fire({

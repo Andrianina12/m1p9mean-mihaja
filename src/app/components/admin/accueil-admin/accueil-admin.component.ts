@@ -18,6 +18,7 @@ export class AccueilAdminComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     await this.getList();
+    await this.getLivreur();
   }
 
   async getList() {
@@ -27,10 +28,10 @@ export class AccueilAdminComponent implements OnInit {
           position: 'center',
           icon: 'error',
           text: response.message,
-          showConfirmButton: true,
+          showConfirmButton: false,
           timer: 2500
         }).then(() => {
-          this.router.navigate['/'];
+          this.router.navigateByUrl('');
         })
         
       } else if(response.code !=200) {
@@ -67,7 +68,7 @@ export class AccueilAdminComponent implements OnInit {
           showConfirmButton: true,
           timer: 2500
         }).then(() => {
-          this.router.navigate['/'];
+          this.router.navigateByUrl('');
         })
         
       } else if(response.code !=200) Swal.fire({
@@ -89,6 +90,44 @@ export class AccueilAdminComponent implements OnInit {
                 timer: 2500
               }) }
     this.service.listLivreurs().subscribe(success, error);
+  }
+
+  async update(commande) {
+    console.log(commande);
+    const success = response => {
+      if(response.code == 401) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: false,
+          timer: 2500
+        }).then(() => {
+          this.router.navigateByUrl('');
+        })
+        
+      } else if(response.code !=200) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: false,
+          timer: 12500
+        }).then(() => this.isLoading = false)
+      } 
+      else {
+        this.list = response.data;
+        this.isLoading = false
+      } 
+    }
+    const error = response => { Swal.fire({
+                position: 'center',
+                icon: 'error',
+                text: response.message,
+                showConfirmButton: false,
+                timer: 2500
+              })}
+    this.service.updateCommande(commande).subscribe(success, error);
   }
 
 }
