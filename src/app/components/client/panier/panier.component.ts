@@ -34,6 +34,7 @@ export class PanierComponent implements OnInit {
 
   valider() {
     this.panier.date = this.datePipe.transform(this.date, 'yyyy-MM-dd,  h:mm a');
+    this.panier.date_stat = this.datePipe.transform(this.date, 'yyyy-MM-dd');
     this.panier.nom = localStorage.getItem('user');
     this.panier.adresse = this.adresse;
     this.panier.numero = this.numero;

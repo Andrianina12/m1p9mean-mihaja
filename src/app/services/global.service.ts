@@ -49,6 +49,7 @@ export class Panier {
     this.total = 0;
     this.benefice_resto = 0;
   }
+  date_stat: string
   date: string
   numero: string
   adresse: string

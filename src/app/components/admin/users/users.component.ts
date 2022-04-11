@@ -90,6 +90,9 @@ export class UsersComponent implements OnInit {
                 })
         else {
           this.list = response.data;
+          this.email = '';
+          this.motdepasse = '';
+          this.role = '';
         } 
       }
       const error = response => { Swal.fire({
