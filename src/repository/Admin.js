@@ -55,6 +55,7 @@ exports.updateCommande = async function update(commande) {
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("commandes");
         var param = {
+            _id: commande._id,
             nom: commande.nom,
             date: commande.date
         }
