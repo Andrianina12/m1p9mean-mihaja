@@ -13,10 +13,12 @@ export class AccueilClientComponent implements OnInit {
   listeResto = [];
   list = [];
   mot: string = '';
+  isLoading: boolean;
   constructor(private router: Router, private service: ClientService) { }
 
-  ngOnInit(): void {
-    this.getListeResto();
+  async ngOnInit() {
+    this.isLoading = true;
+    await this.getListeResto();
   }
 
   getListeResto() {
@@ -32,16 +34,19 @@ export class AccueilClientComponent implements OnInit {
           this.router.navigate['/'];
         })
         
-      } else if(response.code !=200) Swal.fire({
-                position: 'center',
-                icon: 'error',
-                text: response.message,
-                showConfirmButton: false,
-                timer: 2500
-              })
+      } else if(response.code !=200){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: false,
+          timer: 2500
+        }).then(() => this.isLoading = false)
+      } 
       else {
         this.listeResto = response.data;
         this.list = response.data;
+        this.isLoading = false;
       } 
     }
     const error = response => { Swal.fire({
@@ -50,7 +55,7 @@ export class AccueilClientComponent implements OnInit {
                 text: response.message,
                 showConfirmButton: false,
                 timer: 2500
-              }) }
+              }).then(() => this.isLoading = false) }
     this.service.getList().subscribe(success, error);
   }
 

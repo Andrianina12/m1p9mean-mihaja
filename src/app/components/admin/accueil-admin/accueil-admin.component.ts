@@ -11,13 +11,53 @@ import Swal from 'sweetalert2';
 export class AccueilAdminComponent implements OnInit {
 
   list: [];
+  livreurs: [];
+  isLoading: Boolean;
   constructor(private service: AdminService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.getList();
+  async ngOnInit() {
+    this.isLoading = true;
+    await this.getList();
   }
 
   async getList() {
+    const success = response => {
+      if(response.code == 401) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: true,
+          timer: 2500
+        }).then(() => {
+          this.router.navigate['/'];
+        })
+        
+      } else if(response.code !=200) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: response.message,
+          showConfirmButton: false,
+          timer: 2500
+        }).then(() => this.isLoading = false)
+      } 
+      else {
+        this.list = response.data;
+        this.isLoading = false
+      } 
+    }
+    const error = response => { Swal.fire({
+                position: 'center',
+                icon: 'error',
+                text: response.message,
+                showConfirmButton: false,
+                timer: 2500
+              }).then(() => this.isLoading = false) }
+    this.service.listCommandes().subscribe(success, error);
+  }
+
+  async getLivreur() {
     const success = response => {
       if(response.code == 401) {
         Swal.fire({
@@ -38,7 +78,7 @@ export class AccueilAdminComponent implements OnInit {
                 timer: 2500
               })
       else {
-        this.list = response.data;
+        this.livreurs = response.data;
       } 
     }
     const error = response => { Swal.fire({
@@ -48,7 +88,7 @@ export class AccueilAdminComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 2500
               }) }
-    this.service.listCommandes().subscribe(success, error);
+    this.service.listLivreurs().subscribe(success, error);
   }
 
 }

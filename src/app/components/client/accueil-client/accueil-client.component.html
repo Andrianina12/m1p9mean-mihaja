@@ -1,5 +1,17 @@
+<div class="boxes" id="body" *ngIf="isLoading">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
 
-<div class="wrapper">
+
+<div class="wrapper" *ngIf="!isLoading">
     <div class="main">
         <div style="background-color: #bcbbbb">
             <div id="home">

@@ -1,6 +1,18 @@
 
+<div class="boxes" id="body" *ngIf="isLoading">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
 
-<div class="wrapper">
+
+<div class="wrapper" *ngIf="!isLoading">
     <div class="main" id="home">
         <div class="row">
             <div class="col-md-12">
@@ -13,6 +25,7 @@
                             <th>Total</th>
                             <th>Benefice</th>
                             <th>Etat</th>
+                            <th>Livreur</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -23,6 +36,16 @@
                             <td>{{item.total  | number:'1.0-0'}} </td>
                             <td>{{item.benefice_ekaly  | number:'1.0-0'}} </td>
                             <td>{{item.etat}} </td>
+                            <td *ngIf="item.livreur">{{item.livreur}}</td>
+                            <td *ngIf="!item.livreur">
+                                <select class="form-control" [(ngModel)]="item.livreur">
+                                    <option *ngFor="let livreur of livreurs" value="livreur.email">{{livreur.email}}</option>
+                                </select>
+                            </td>
+                            <td *ngIf="!item.livreur">
+                                <button class="btn btn-danger"><i class="fa fa-solid fa-check"></i></button>
+                            </td>
+                            
                         </tr>
                     </tbody>
                 </table>

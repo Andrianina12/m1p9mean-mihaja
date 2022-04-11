@@ -24,4 +24,9 @@ export class AdminService {
     const options = this.globalService.formOption(true, localStorage.getItem('token'));
     return this.http.post(this.globalService.url + "insertUser",user, options);
   }
+
+  listLivreurs():  Observable<any> {
+    const options = this.globalService.formOption(true, localStorage.getItem('token'));
+    return this.http.get(this.globalService.url + "getLivreur", options);
+  }
 }
