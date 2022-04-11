@@ -94,7 +94,7 @@ exports.getLivreur = async function getLivreur() {
         await client.connect();
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
-        const result = await collection.find({role: "livreur"}).toArray();
+        const result = await collection.find({role: "Livreur"}).toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {
         response = {code: 501,  data: null, message: e.message};
@@ -112,7 +112,7 @@ exports.getUsers = async function getUsers() {
         await client.connect();
         var dbo = client.db("m1p9mean");
         var collection = dbo.collection("users");
-        const result = await collection.find({role: {$not: { $regex: "^client.*" }}}).toArray();
+        const result = await collection.find({role: {$or: [{role: 'Livreur'}, {role: 'Restaurant'}] }}).toArray();
         response = {code: 200, data: result, message: null}
     } catch (e) {
         response = {code: 501,  data: null, message: e.message};
